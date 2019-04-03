@@ -1,0 +1,17 @@
+
+spring:
+ application:
+   name: spring-cloud-stream-input2
+ rabbitmq:
+   host: 127.0.0.1
+   port: 5672
+   username: guest
+   password: guest
+ cloud:
+   stream:
+     bindings:
+       TRANS_INPUT:
+         destination: my-trans
+         contentType: text/plain
+server:
+  port: 8082

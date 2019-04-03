@@ -1,0 +1,34 @@
+spring:
+ application:
+   name: spring-cloud-stream-input
+ rabbitmq:
+   host: 127.0.0.1
+   port: 5672
+   username: guest
+   password: guest
+ cloud:
+   stream:
+     rabbit:
+       bindings:
+         SENDBINDERINPUT:
+           consumer:
+             bindingRoutingKey: not-key
+         MY_IN_PUT:
+           consumer:
+             bindingRoutingKey: study-key
+     bindings:
+       SENDBINDERINPUT:
+         destination: myOutput
+         contentType: text/plain
+       SENDBINDEROUTPUT:
+         destination: my-trans
+         contentType: text/plain
+       MY_IN_PUT:
+         destination: myOutput
+         contentType: text/plain
+         group: group
+       TRANS_OUT:
+         destination: my-trans
+         contentType: text/plain
+server:
+  port: 8081

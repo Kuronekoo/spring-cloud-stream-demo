@@ -1,0 +1,29 @@
+spring:
+ application:
+   name: rabbit-mq-demo
+ rabbitmq:
+   host: 127.0.0.1
+   port: 5672
+   username: guest
+   password: guest
+ cloud:
+   stream:
+     rabbit:
+       bindings:
+         MY_OUT_PUT:
+           producer:
+             routing-key-expression: '''study-key'''
+     bindings:
+       MY_OUT_PUT:
+         destination: myOutput
+         contentType: text/plain
+
+       output:
+         destination: baseQueue
+         contentType: text/plain
+       ORDER_ASSEMBLE_DOMAIN_INPUT:
+         destination: mqTestDefault
+         contentType: text/plain
+       ORDER_ASSEMBLE_DOMAIN_OUTPUT:
+         destination: mqTestDefault
+         contentType: text/plain
