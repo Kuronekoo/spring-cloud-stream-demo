@@ -10,6 +10,7 @@ spring:
    stream:
      rabbit:
        bindings:
+         #指定消息接收的其他参数，可以具体到某一个channel，接收通道的接口定一个路由
          SENDBINDERINPUT:
            consumer:
              bindingRoutingKey: not-key
@@ -23,6 +24,7 @@ spring:
        SENDBINDEROUTPUT:
          destination: my-trans
          contentType: text/plain
+         #如果消费者置了group，那么即使消费者停了，生产生产的消息也会持久化，在消费者起来之后会继续消费
        MY_IN_PUT:
          destination: myOutput
          contentType: text/plain
